@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="mt-5">
+        <h4>List all <%= @dojos.length %> Dojos</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="bg-success text-light">
+                    <th class="w-25">CodingDojo Branch</th>
+                    <th>Street</th>
+                    <th>City</th>
+                    <th>State</th>
+                </thead>
+                <tbody>
+                <% @dojos.each do |dojo|%>
+                    <tr>
+                        <td><%= dojo.branch %></td>
+                        <td><%= dojo.street %></td>
+                        <td><%= dojo.city %></td>
+                        <td><%= dojo.state %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
