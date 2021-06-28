@@ -1,6 +1,6 @@
 <div class="container">
     <div class="mt-5">
-        <h4>List all <%= @dojos.length %> Dojos</h4>
+        <h3>List all <%= @dojos.length %> Dojos</h3>
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <thead class="bg-success text-light">
@@ -8,6 +8,7 @@
                     <th>Street</th>
                     <th>City</th>
                     <th>State</th>
+                    <th class="w-25">Actions</th>
                 </thead>
                 <tbody>
                 <% @dojos.each do |dojo|%>
@@ -16,10 +17,16 @@
                         <td><%= dojo.street %></td>
                         <td><%= dojo.city %></td>
                         <td><%= dojo.state %></td>
+                        <td>
+                            <a href="" class="text-decoration-none">Show</a> |
+                            <a href="" class="text-decoration-none">Edit</a> |
+                            <a href="" class="text-decoration-none">Destory</a>
+                        </td>
                     </tr>
                 <% end %>
                 </tbody>
             </table>
         </div>
+        <a href="dojos/new" class="btn btn-sm btn-outline-success">New Dojo</a>
     </div>
 </div>
