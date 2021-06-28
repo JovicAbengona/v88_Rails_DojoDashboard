@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="col-lg-6 offset-lg-3 col-md-12 mt-5">
+        <h2 class="display-3"><%= @dojo.branch %></h2>
+        <p><span class="fw-bold">Address:</span> <%= @dojo.street %></p>
+        <div class="row">
+            <p class="col-4"><span class="fw-bold">City:</span> <%= @dojo.city %></p>
+            <p class="col-8"><span class="fw-bold">State:</span> <%= @dojo.state %></p>
+        </div>
+        <a href="/" class="btn btn-sm btn-success">Home</a>
+        <a href="<%= @dojo.id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+    </div>
+</div>

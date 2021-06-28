@@ -1,0 +1,42 @@
+<div class="container">
+    <h4 class="col-lg-6 offset-lg-3 col-md-12 mt-5">Editing <%= @dojo.branch %></h4>
+    <% if flash[:errors] != nil %>
+        <div class="col-lg-6 offset-lg-3 alert alert-danger" role="alert">
+        <% flash[:errors].each do |error| %>
+            <p><%= error %></p>
+        <% end %>
+        </div>
+    <% end %>
+    <form action="/dojos/<%= @dojo.id %>" method="POST" class="col-lg-6 offset-lg-3 col-md-12 border border-dark rounded p-5 mt-3 mb-3">
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="row mb-3">
+            <label for="branch" class="col-sm-4 col-form-label">Branch:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="branch" name=dojo[branch] value="<%= @dojo.branch %>" placeholder="Enter branch here">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="street" class="col-sm-4 col-form-label">Street:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="street" name=dojo[street] value="<%= @dojo.street %>" placeholder="Enter street here">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="city" class="col-sm-4 col-form-label">City:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="city" name=dojo[city] value="<%= @dojo.city %>" placeholder="Enter city here">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="state" class="col-sm-4 col-form-label">State:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="state" name=dojo[state] value="<%= @dojo.state %>" placeholder="Enter state here">
+            </div>
+        </div>
+        <div class="mb-5">
+            <button type="submit" class="btn btn-success float-end">Update</button>
+        </div>
+    </form>
+    <a href="/" class="text-decoration-none col-lg-6 offset-lg-3 col-md-12">Go Back</a>
+</div>
