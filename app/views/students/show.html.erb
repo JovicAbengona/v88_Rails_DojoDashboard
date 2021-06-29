@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="col-lg-8 offset-lg-2 col-md-12 mt-5">
+        <h2 class="display-3 d-inline"><%= @dojo.branch %>'s <%= @student.full_name %></h2>
+        <p class="mt-5"><span class="fw-bold">Email:</span> <%= @student.email %></p>
+        <h4>Cohort</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="bg-success text-light">
+                    <th class="w-25">First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                </thead>
+                <tbody>
+                <% if @students.length > 0 %>
+                    <% @students.each do |student|%>
+                        <tr>
+                            <td><%= student.first_name %></td>
+                            <td><%= student.last_name %></td>
+                            <td><%= student.email %></td>
+                        </tr>
+                    <% end %>
+                <% else %>
+                    <tr>
+                        <td colspan=4>No Student Data</td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
+        <a href="/" class="btn btn-sm btn-success">Home</a>
+        <a href="<%= @student.id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+    </div>
+</div>

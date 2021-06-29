@@ -1,12 +1,48 @@
 <div class="container">
-    <div class="col-lg-6 offset-lg-3 col-md-12 mt-5">
-        <h2 class="display-3"><%= @dojo.branch %></h2>
+    <div class="col-lg-8 offset-lg-2 col-md-12 mt-5">
+        <h2 class="display-3 d-inline"><%= @dojo.branch %></h2>
+        <a href="<%= @dojo.id %>/edit" class="text-decoration-none d-inline ms-3">Edit</a>
         <p><span class="fw-bold">Address:</span> <%= @dojo.street %></p>
         <div class="row">
             <p class="col-4"><span class="fw-bold">City:</span> <%= @dojo.city %></p>
             <p class="col-8"><span class="fw-bold">State:</span> <%= @dojo.state %></p>
         </div>
+        <h4>Student Roster</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="bg-success text-light">
+                    <th class="w-25">First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th class="w-25">Actions</th>
+                </thead>
+                <tbody>
+                <% if @students.length > 0 %>
+                    <% @students.each do |student|%>
+                        <tr>
+                            <td><%= student.first_name %></td>
+                            <td><%= student.last_name %></td>
+                            <td><%= student.email %></td>
+                            <td>
+                                <a href="<%= @dojo.id %>/students/<%= student.id %>" class="btn btn-sm btn-info">Show</a>
+                                <a href="<%= @dojo.id %>/students/<%= student.id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                <form action="<%= student.id %>/students" method="POST" class="d-inline">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% end %>
+                <% else %>
+                    <tr>
+                        <td colspan=4>No Student Data</td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
         <a href="/" class="btn btn-sm btn-success">Home</a>
-        <a href="<%= @dojo.id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+        <a href="<%= @dojo.id %>/students/new" class="btn btn-sm btn-success float-end">Add Student</a>
     </div>
 </div>
